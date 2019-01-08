@@ -1,14 +1,14 @@
 <template>
 
   <nav>
-  <v-toolbar flat dark app color="#00aeef" height="80">
+  <v-toolbar flat dark app color="primary" height="80">
     <v-toolbar-side-icon v-if="!drawer" @click="drawer = true" class="hidden-md-and-up"></v-toolbar-side-icon>
     
         <v-icon v-else @click="drawer = false">close</v-icon>
 
     <v-toolbar-title>
       <a href="/" title="Return To Home">
-        <img height="100" alt="Chris Bemister | Web Application Developer" class="logo" style="" srcset="@/assets/images/logo_331x150.png 1x, @/assets/images/logo_661x300.png 2x, @/assets/images/logo_992x450.png 3x" />
+        <img height="100" alt="Chris Bemister | Web Application Developer" class="logo" style="margin-top: 5px;" srcset="@/assets/images/logo_331x150.png 331w, @/assets/images/logo_661x300.png 661w, @/assets/images/logo_992x450.png 992w" />
         <!-- <img height="150" alt="" class="logo hidden-sm-and-up" onerror="this.src='@/assets/images/color-logo-land.png',this.onerror=null" src="@/assets/images/color-logo-land.svg" /> -->
       </a>
 

@@ -1,21 +1,21 @@
 <template>
   <v-app class="grey lighten-4">
-    <MainNav />
+    <!--<MainNav />-->
     <v-content>
         <nuxt />
     </v-content>
-    <FooterNavMobile class="hidden-sm-and-up"/>
-    <FooterNavDesktop class="hidden-xs-only"/>
+    <TheMobileFooter class="hidden-sm-and-up"/>
+    <TheDesktopFooter class="hidden-xs-only"/>
   </v-app>
 </template>
 
 <script>
-import MainNav from '@/components/Menus/TheMainNav'
-import FooterNavMobile from '@/components/Menus/TheMobileFooterNav'
-import FooterNavDesktop from '@/components/Menus/TheDesktopFooterNav'
+import MainNav from '@/components/Navigation/TheMainMenu'
+import TheMobileFooter from '@/components/Navigation/TheMobileFooter'
+import TheDesktopFooter from '@/components/Navigation/TheDesktopFooter'
 
 export default {
-  components: { MainNav, FooterNavMobile, FooterNavDesktop  },
+  components: { MainNav, TheMobileFooter, TheDesktopFooter  },
   name: 'App',
   data () {
     return {

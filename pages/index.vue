@@ -5,10 +5,12 @@
         <div class="text-xs-center">
           <h1>Home Page</h1>
         </div>
+        <AuthDialog />
+        <ComposeDialog />
       </v-flex>
       <v-container fluid grid-list-lg>
         <v-layout row wrap>
-          <Card
+          <AppCard
             v-for="(card, index) in cards"
             :title="card.title"
             :src="card.src"
@@ -23,11 +25,15 @@
 </template>
 
 <script>
-import Card from "@/components/UI/Card";
+import AppCard from "@/components/UI/AppCard";
+import AuthDialog from "@/components/Dialog/Auth";
+import ComposeDialog from "@/components/Dialog/Compose";
 
 export default {
   components: {
-    Card
+    AppCard,
+    AuthDialog,
+    ComposeDialog
   },
   data() {
     return {
@@ -70,5 +76,5 @@ export default {
       ]
     };
   }
-};
+}
 </script>

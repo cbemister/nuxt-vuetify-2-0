@@ -17,5 +17,9 @@ Vue.use(Vuetify, {
   directives: {
     Ripple
   },
+  theme: {
+    primary:     '#00aeef',
+    secondary:   '#8b8b8b'
+  },
   iconfont: 'md' // 'md' || 'mdi' || 'fa' || 'fa4'
 })
