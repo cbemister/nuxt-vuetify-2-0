@@ -8,7 +8,7 @@
 
     <v-toolbar-title>
       <a href="/" title="Return To Home">
-        <img height="100" alt="" class="logo" style="" srcset="@/assets/images/logo_331x150.png 331w, @/assets/images/logo_661x300.png 661w, @/assets/images/logo_992x450.png 992w," />
+        <img height="100" alt="Chris Bemister | Web Application Developer" class="logo" style="" srcset="@/assets/images/logo_331x150.png 1x, @/assets/images/logo_661x300.png 2x, @/assets/images/logo_992x450.png 3x" />
         <!-- <img height="150" alt="" class="logo hidden-sm-and-up" onerror="this.src='@/assets/images/color-logo-land.png',this.onerror=null" src="@/assets/images/color-logo-land.svg" /> -->
       </a>
 
@@ -38,7 +38,8 @@
       <v-list class="pa-1">
         <v-list-tile avatar>
           <v-list-tile-avatar>
-            <img src="@/assets/images/chrisbemister_460x460.jpg">
+            <!-- <img src="@/assets/images/chrisbemister_460x460.jpg"> -->
+            <img height="40" alt="Chris Bemister | Web Application Developer" srcset="@/assets/images/chrisbemister_40x40.jpg 1x, @/assets/images/chrisbemister_80x80.jpg 2x, @/assets/images/chrisbemister_120x120.jpg 3x," />
           </v-list-tile-avatar>
 
           <v-list-tile-content>
