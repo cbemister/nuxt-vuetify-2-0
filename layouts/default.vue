@@ -1,22 +1,26 @@
 <template>
-  <v-app>
+  <v-app class="grey lighten-4">
+    <MainNav />
     <v-content>
-      <v-container>
         <nuxt />
-      </v-container>
     </v-content>
-
-    <v-footer fixed="fixed" app class="justify-center">
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+    <FooterNavMobile class="hidden-sm-and-up"/>
+    <FooterNavDesktop class="hidden-xs-only"/>
   </v-app>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-      }
+import MainNav from '@/components/Menus/TheMainNav'
+import FooterNavMobile from '@/components/Menus/TheMobileFooterNav'
+import FooterNavDesktop from '@/components/Menus/TheDesktopFooterNav'
+
+export default {
+  components: { MainNav, FooterNavMobile, FooterNavDesktop  },
+  name: 'App',
+  data () {
+    return {
+      
     }
   }
+}
 </script>
