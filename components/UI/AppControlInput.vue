@@ -1,25 +1,37 @@
 <template>
   <div class="input-control">
-    <label><slot /></label> 
-    <input
-      v-if="controlType === 'input' && !inputTitle"
-      v-bind="$attrs"
-      :value="value"
-      @input="$emit('input', $event.target.value)">
-    <input
-      v-else-if="inputTitle"
-      v-bind="$attrs"
-      :value="value"
-      ref="title"
-      @blur="checkTitle"
-      @keydown="removeMessage"
-      @input="$emit('input', $event.target.value)">
+    <!--<label><slot /></label>-->
+
+    <v-flex xs12>
+        <v-text-field 
+          :label="label"
+          v-if="controlType === 'input' && !inputTitle"
+          v-bind="$attrs"
+          :value="value"
+          @input="$emit('input', $event.target.value)">
+        ></v-text-field>
+        <v-text-field 
+          label="Title"
+          v-if="controlType === 'input' && inputTitle"
+          v-bind="$attrs"
+          :value="value"
+          ref="title"
+          @blur="checkTitle"
+          @keydown="removeMessage"
+          @input="$emit('input', $event.target.value)">
+        ></v-text-field>
+        <v-textarea
+          v-else-if="controlType === 'textarea'"
+          :label="label"
+          auto-grow
+          :value="value"
+          @input="$emit('input', $event.target.value)"
+        ></v-textarea>
+    </v-flex>
+
+
     <span class="message" v-if="duplicateTitle">{{ message }}</span>
-    <textarea
-      v-if="controlType === 'textarea'"
-      rows="10"
-      :value="value"
-      @input="$emit('input', $event.target.value)"></textarea>
+
   </div>
 </template>
 
@@ -45,6 +57,10 @@ export default {
       default: false
     },
     value: {
+      type: String,
+      default: ''
+    },
+    label: {
       type: String,
       default: ''
     }

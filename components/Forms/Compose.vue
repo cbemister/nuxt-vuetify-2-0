@@ -1,19 +1,25 @@
  <template>
  
 <div>
-    <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
-    <AppControlInput v-model="editedPost.title" :disabled="existingPost === true" inputTitle>Title</AppControlInput>
-    <AppControlInput
-      v-model="editedPost.shortDescription">Short Description</AppControlInput>
+    <AppControlInput v-model="editedPost.author" label="Author Name" />
+    <AppControlInput v-model="editedPost.title" :disabled="existingPost === true" inputTitle label="Title" />
+    <AppControlInput v-model="editedPost.shortDescription" label="Short Description" />
 
+      <v-flex xs6>
+        <v-subheader>Custom items</v-subheader>
+      </v-flex>
 
-    <span>
-      <label for="pageType">Page Type: </label>
-      <select name="pageType" v-model="editedPost.pageType" :disabled="existingPost === true">
-        <option value="post" :selected="true">Post</option>
-        <option value="page">Page</option>
-      </select>
-    </span>
+      <v-flex xs6>
+        <v-select
+          :items="options"
+          item-text="pageType"
+          item-value="pageType"
+          label="Select Page Type"
+          return-object
+          v-model="editedPost.pageType"
+          :disabled="existingPost === true"
+        ></v-select>
+      </v-flex>
 
     <span v-if="editedPost.pageType === 'page'">
       <label for="category">Category: </label>
@@ -27,54 +33,16 @@
 
     <label for="featured">Featured: </label>
     <input v-model="editedPost.featured" type="checkbox" id="featured " name="featured" value="false">
-    <AppControlInput v-model="editedPost.thumbnail">Thumbnail Link</AppControlInput>
-    <AppControlInput
-      controlType="textarea"
-      v-model="editedPost.content">Content</AppControlInput>
+    <AppControlInput v-model="editedPost.thumbnail" label="Thumbnail Link" />
+    <AppControlInput controlType="textarea" v-model="editedPost.content" label="Main Content" />
 
-    <AppButton type="submit">Save</AppButton>
-    <AppButton
-      type="button"
-      style="margin-left: 10px"
-      btn-style="cancel"
-      @click="onCancel">Cancel</AppButton>
- 
-            <v-layout wrap>
-              <v-flex xs12 sm6 md4>
-                <v-text-field label="Legal first name*" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md4>
-                <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md4>
-                <v-text-field
-                  label="Legal last name*"
-                  hint="example of persistent helper text"
-                  persistent-hint
-                  required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12>
-                <v-text-field label="Email*" required></v-text-field>
-              </v-flex>
-              <v-flex xs12>
-                <v-text-field label="Password*" type="password" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-select
-                  :items="['0-17', '18-29', '30-54', '54+']"
-                  label="Age*"
-                  required
-                ></v-select>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-autocomplete
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                  label="Interests"
-                  multiple
-                ></v-autocomplete>
-              </v-flex>
-            </v-layout>
+    <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
+    <AppButton>Submit</AppButton
+
+    </v-card-actions>
+
+
+
 
 </div>
 
@@ -128,7 +96,17 @@ export default {
             shortDescription: "",
             existingPost: false 
           },
-      existingPost: this.post ? true : false  
+      existingPost: this.post ? true : false,
+      options: [
+          {
+            selected: false,
+            pageType: 'Post'  
+          },
+          {
+            selected: false,
+            pageType: 'Page',  
+          }
+      ]  
     };
   },
   computed: {
