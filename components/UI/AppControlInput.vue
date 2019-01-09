@@ -8,6 +8,7 @@
           v-if="controlType === 'input' && !inputTitle"
           v-bind="$attrs"
           :value="value"
+          required
           @input="$emit('input', $event.target.value)">
         ></v-text-field>
         <v-text-field 
@@ -16,6 +17,7 @@
           v-bind="$attrs"
           :value="value"
           ref="title"
+          required
           @blur="checkTitle"
           @keydown="removeMessage"
           @input="$emit('input', $event.target.value)">
