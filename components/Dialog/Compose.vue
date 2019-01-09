@@ -23,7 +23,7 @@
         <v-card-text>
           <v-container grid-list-md>
             <v-form @submit.prevent="onSubmit">
-                <component is="ComposeForm" />
+                <component @dialogClose="dialog = !dialog"  is="ComposeForm" />
             </v-form>
           </v-container>
           <small>*indicates required field</small>

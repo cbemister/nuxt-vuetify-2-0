@@ -23,7 +23,7 @@
         <v-card-text>
           <v-container grid-list-md>
             <v-form @submit.prevent="onSubmit">
-                <AuthForm />
+                <AuthForm @dialogClose="dialog = !dialog" />
             </v-form>
           </v-container>
           <small>*indicates required field</small>

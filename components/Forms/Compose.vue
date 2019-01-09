@@ -46,7 +46,7 @@
     <AppControlInput v-model="editedPost.thumbnail" label="Thumbnail Link"/>
     <AppControlInput controlType="textarea" v-model="editedPost.content" label="Main Content"/>
 
-    <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
+    <v-btn color="blue darken-1" flat @click="$emit('dialogClose')">Close</v-btn>
     <AppButton>Submit</AppButton>
   </div>
 </template>
@@ -143,6 +143,7 @@ export default {
   },
   methods: {
     onSave() {
+      
       // Save the post
       this.updateSlug();
 

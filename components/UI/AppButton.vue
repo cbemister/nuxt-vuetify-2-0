@@ -5,7 +5,7 @@
           type="submit" 
           dark 
           lowercase 
-          @click="dialog = false"
+          @click="$emit('drawerClose')"
           :bind="$attrs"
           v-on="$listeners">
         <slot />
