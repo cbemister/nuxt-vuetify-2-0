@@ -88,6 +88,7 @@ export default {
             author: "Chris Bemister",
             title: "",
             slug: "",
+            status: "",
             category: "",
             pageType: "",
             featured: false,

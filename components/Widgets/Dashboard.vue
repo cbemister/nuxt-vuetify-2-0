@@ -45,7 +45,7 @@
         ></v-select>
       </v-layout>
       <v-card flat v-for="post in filteredPosts" :key="post.title">
-        <ComposeDialog isAdmin dashboard :post="cards[0]" class="row align-center">
+        <ComposeDialog isAdmin dashboard :post="post" class="row align-center">
           <v-layout row wrap :class="`pa-3 post ${post.category}`">
             <v-flex xs6 sm3 md2>
               <div class="caption grey--text">Author</div>
@@ -54,11 +54,11 @@
             <v-flex xs12 md5>
               <div class="caption grey--text">Title / Description</div>
               <div class="body-2 primary--text text--darken-1">{{ post.title }}</div>
-              <div>{{ post.description }}</div>
+              <div>{{ post.shortDescription }}</div>
             </v-flex>
             <v-flex xs2 sm3 md2>
               <div class="caption grey--text">Date</div>
-              <div>{{ post.date }}</div>
+              <div>{{ post.updatedDate | date }}</div>
             </v-flex>
             <v-flex xs6 sm3 md1>
               <div class="caption grey--text">Category</div>
@@ -95,177 +95,70 @@ components: {
   data() {
     return {
       dialog: false,
-      cards: [
-        {
-          author: "Chris Bemister",
-          title: "Pre-fab homes",
-          slug: "/blog/pre-fab-homes",
-          category: "",
-          pageType: "post",
-          featured: true,
-          thumbnail: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-          content:
-            "Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...",
-          shortDescription:
-            "Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...",
-          existingPost: true
-        },
-        {
-          author: "Chris Bemister",
-          title: "Favorite road trips",
-          slug: "/blog/favorite-road-trips",
-          category: "",
-          pageType: "post",
-          featured: true,
-          thumbnail: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-          content:
-            "Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...",
-          shortDescription:
-            "Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...",
-          existingPost: true
-        },
-        {
-          author: "Chris Bemister",
-          title: "Best airlines",
-          slug: "/blog/best-airlines",
-          category: "",
-          pageType: "post",
-          featured: true,
-          thumbnail: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-          content:
-            "Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...",
-          shortDescription:
-            "Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...",
-          existingPost: false
-        }
-      ],
       posts: [
+          {
+          author: "Chris Bemister",
+          category: "portfolio",
+          content: "even more content",
+          featured: true,
+          id: "-LNCHkROSDOfQFl-iHQx",
+          pageType: "page",
+          previewText: "preview text",
+          shortDescription: "beautiful",
+          slug: "/portfolio/title",
+          thumbnail: "https://images.pexels.com/photos/18396/pexels-p...",
+          title: "title",
+          updatedDate: "2018-09-24T20:35:11.568Z",
+          status: "live"	
+        },
         {
-          title: "Design a new website",
-          author: "Nina Bemister",
-          status: "Live",
-          date: "3 Nov 2018",
-          category: "Technology",
+          author: "Chris Bemister",
+          category: "about",
+          content: "Just a quick hello",
+          featured: true,
+          id: "-LSYH-wbP_Wqet5w7EnO",
+          pageType: "post",
+          shortDescription: "I am going to be the greatest blogger ever.",
+          slug: "/about/profile",
+          status: "deleted",
+          thumbnail: "https://cdn.vuetifyjs.com/images/posts/house.jpg",
+          title: "profile",
+          updatedDate: "2018-11-30T06:22:03.426Z"
+        },
+        {
+          author: "Chris Bemister",
+          category: "technology",
+          content: "Is this working?",
+          featured: true,
+          id: "-LQN3gwdDbXzEXfnV2Ld",
+          pageType: "page",
+          shortDescription: "yeah yeah yeah",
+          slug: "/technology/quick-test-post",
+          status: "draft",
+          thumbnail: "https://cdn.vuetifyjs.com/images/posts/plane.jpg",
+          title: "Quick test post",
+          updatedDate: "2018-11-03T05:36:42.880Z"	
+        },
+        {
+          author: "Chris Bemister",
+          category: "sandbox",
+          content: "I really need to start populating some real con...",
           featured: false,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Code up the homepage",
-          author: "Chris Bemister",
-          status: "Draft",
-          date: "30 Dec 2018",
-          category: "Portfolio",
-          featured: true,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Design video thumbnails",
-          author: "Chris Bemister",
-          status: "Deleted",
-          date: "20 Aug 2018",
-          category: "Portfolio",
-          featured: true,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Create a community forum",
-          author: "Chris Bemister",
-          status: "Live",
-          date: "20 Oct 2018",
-          category: "Sandbox",
-          featured: true,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Design a new website2",
-          author: "Nina Bemister",
-          status: "Live",
-          date: "3 Nov 2018",
-          category: "Technology",
-          featured: false,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Code up the homepage2",
-          author: "Chris Bemister",
-          status: "Draft",
-          date: "30 Dec 2018",
-          category: "Portfolio",
-          featured: true,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Design video thumbnails2",
-          author: "Chris Bemister",
-          status: "Deleted",
-          date: "20 Aug 2018",
-          category: "Portfolio",
-          featured: true,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Create a community forum2",
-          author: "Chris Bemister",
-          status: "Live",
-          date: "20 Oct 2018",
-          category: "Sandbox",
-          featured: true,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Design a new website3",
-          author: "Nina Bemister",
-          status: "Live",
-          date: "3 Nov 2018",
-          category: "Technology",
-          featured: false,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Code up the homepage3",
-          author: "Chris Bemister",
-          status: "Draft",
-          date: "30 Dec 2018",
-          category: "Portfolio",
-          featured: true,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Design video thumbnails3",
-          author: "Chris Bemister",
-          status: "Deleted",
-          date: "20 Aug 2018",
-          category: "Portfolio",
-          featured: true,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Create a community forum3",
-          author: "Chris Bemister",
-          status: "Live",
-          date: "20 Oct 2018",
-          category: "Sandbox",
-          featured: true,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
+          id: "-LShNhXq34_YA1M0hE1c",
+          pageType: "page",
+          shortDescription: "Just a test",
+          slug: "/sandbox/title2",
+          status: "draft",
+          thumbnail: "https://cdn.vuetifyjs.com/images/posts/house.jpg",
+          title: "title2",
+          updatedDate: "2018-12-02T05:27:31.059Z"
         }
       ],
       filters: {
         categories: ["Portfolio", "Technology", "Sandbox"],
         authors: ["Chris Bemister", "Nina Bemister"],
         featured: ["Yes", "No"],
-        status: ["Live", "Draft", "Deleted"],
+        status: ["live", "draft", "deleted"],
         date: ["30", "60", "90"],
         selected: [
           [], // Author
@@ -284,7 +177,7 @@ components: {
   computed: {
     filteredPosts() {
       return this.posts.filter(post => {
-        post.postAge = this.daysBetweenPosts(post.date);
+        post.postAge = this.daysBetweenPosts(post.updatedDate);
 
         if (
           (this.filters.selected[0] === null ||

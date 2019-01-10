@@ -78,7 +78,7 @@ module.exports = {
     ]
   },
 
-  plugins: ["~/plugins/vuetify.js"],
+  plugins: ["~/plugins/vuetify.js", "~/plugins/date-filter.js"],
   /*
    ** Nuxt.js modules
    */

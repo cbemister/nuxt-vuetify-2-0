@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <slot />
-    <v-dialog :dialog="dialog" width="600">
+    <v-dialog v-model="dialog" width="600">
           <div class="absolute" v-if="!drawer" slot="activator">
           <v-list-tile>
             <v-list-tile-action style="min-width: 45px;">
