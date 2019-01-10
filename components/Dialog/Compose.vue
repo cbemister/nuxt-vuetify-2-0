@@ -1,13 +1,15 @@
 <template>
   <v-layout>
-    <v-dialog v-model="dialog" width="600">
+    <slot />
+    <v-dialog :dialog="dialog" width="600">
           <div class="absolute" v-if="!drawer" slot="activator">
           <v-list-tile>
             <v-list-tile-action style="min-width: 45px;">
-              <v-icon>create</v-icon>
+              <v-icon v-if="dashboard" class="pa-5 hover" style="margin-left: -17px;">create</v-icon>
+              <v-icon v-else class="hover" style="">create</v-icon>
             </v-list-tile-action>
 
-            <v-list-tile-content>
+            <v-list-tile-content v-if="!dashboard">
               <v-list-tile-title>Compose</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
@@ -23,7 +25,7 @@
         <v-card-text>
           <v-container grid-list-md>
             <v-form @submit.prevent="onSubmit">
-                <component @dialogClose="dialog = !dialog"  is="ComposeForm" />
+                <component @dialogClose="dialog = !dialog" :post="post" :is="form" />
             </v-form>
           </v-container>
           <small>*indicates required field</small>
@@ -47,16 +49,37 @@ export default {
     editPost: {
       type: Boolean,
       default: false
-    }
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false
+    },
+    dashboard: {
+      type: Boolean,
+      default: false
+    },
+    post: {
+      type: Object,
+    },
   },
   data() {
     return {
         desktop: true,
         drawer: false,
         dialog: false,
-        form: '',
+        form: 'ComposeForm',
         label: ''
     };
   }
 }
 </script>
+
+<style>
+
+.hover:hover {
+
+  color: #0093d2;
+
+}
+
+</style>
