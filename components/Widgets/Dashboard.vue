@@ -109,46 +109,46 @@ components: {
           thumbnail: "https://images.pexels.com/photos/18396/pexels-p...",
           title: "title",
           updatedDate: "2018-09-24T20:35:11.568Z",
-          status: "live"	
+          status: "Live"	
         },
         {
           author: "Chris Bemister",
-          category: "about",
+          category: "About",
           content: "Just a quick hello",
           featured: true,
           id: "-LSYH-wbP_Wqet5w7EnO",
           pageType: "post",
           shortDescription: "I am going to be the greatest blogger ever.",
           slug: "/about/profile",
-          status: "deleted",
+          status: "Deleted",
           thumbnail: "https://cdn.vuetifyjs.com/images/posts/house.jpg",
           title: "profile",
           updatedDate: "2018-11-30T06:22:03.426Z"
         },
         {
           author: "Chris Bemister",
-          category: "technology",
+          category: "Technology",
           content: "Is this working?",
           featured: true,
           id: "-LQN3gwdDbXzEXfnV2Ld",
           pageType: "page",
           shortDescription: "yeah yeah yeah",
           slug: "/technology/quick-test-post",
-          status: "draft",
+          status: "Draft",
           thumbnail: "https://cdn.vuetifyjs.com/images/posts/plane.jpg",
           title: "Quick test post",
           updatedDate: "2018-11-03T05:36:42.880Z"	
         },
         {
           author: "Chris Bemister",
-          category: "sandbox",
+          category: "Sandbox",
           content: "I really need to start populating some real con...",
           featured: false,
           id: "-LShNhXq34_YA1M0hE1c",
           pageType: "page",
           shortDescription: "Just a test",
           slug: "/sandbox/title2",
-          status: "draft",
+          status: "Draft",
           thumbnail: "https://cdn.vuetifyjs.com/images/posts/house.jpg",
           title: "title2",
           updatedDate: "2018-12-02T05:27:31.059Z"
@@ -158,7 +158,7 @@ components: {
         categories: ["Portfolio", "Technology", "Sandbox"],
         authors: ["Chris Bemister", "Nina Bemister"],
         featured: ["Yes", "No"],
-        status: ["live", "draft", "deleted"],
+        status: ["Live", "Draft", "Deleted"],
         date: ["30", "60", "90"],
         selected: [
           [], // Author
