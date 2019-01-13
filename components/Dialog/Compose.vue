@@ -5,11 +5,11 @@
           <div class="absolute" v-if="!drawer" slot="activator">
           <v-list-tile>
             <v-list-tile-action style="min-width: 45px;">
-              <v-icon v-if="dashboard" class="pa-5 hover" style="margin-left: -17px;">create</v-icon>
+              <v-icon v-if="editPost" class="pa-5 hover" style="margin-left: -17px;">create</v-icon>
               <v-icon v-else class="hover" style="">create</v-icon>
             </v-list-tile-action>
 
-            <v-list-tile-content v-if="!dashboard">
+            <v-list-tile-content v-if="!editPost">
               <v-list-tile-title>Compose</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
