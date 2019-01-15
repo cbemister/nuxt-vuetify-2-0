@@ -25,7 +25,7 @@
         <v-card-text>
           <v-container grid-list-md>
             <v-form @submit.prevent="onSubmit">
-                <component @dialogClose="dialog = !dialog" :post="post" :is="form" />
+                <component @dialogClose="dialog = !dialog" :postType="postType" :post="post" :is="form" />
             </v-form>
           </v-container>
           <small>*indicates required field</small>
@@ -102,6 +102,14 @@ export default {
       this.editedPost.slug = slugPrefix + "/" + slug;
     }
 
+  },
+  computed: {
+    postType() {
+      if (this.editPost) {
+        return 'editPost' 
+      }
+      return 'newPost'
+    }
   }
 }
 </script>

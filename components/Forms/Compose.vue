@@ -47,7 +47,7 @@
     <AppControlInput controlType="textarea" v-model="editedPost.content" label="Main Content"/>
 
     <v-btn color="blue darken-1" flat @click="$emit('dialogClose')">Close</v-btn>
-    <AppButton>Submit</AppButton>
+    <AppButton>{{ postType === 'newPost' ? btnText = "Submit" : btnText = "Save" }}</AppButton>
   </div>
 </template>
 
@@ -68,6 +68,14 @@ export default {
     drawer: {
       type: Boolean,
       required: false
+    },
+    editPost: {
+      type: Boolean,
+      required: false
+    },
+    postType: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -76,6 +84,7 @@ export default {
       isLogin: true,
       email: "",
       password: "",
+      btnText: "",
       emailRules: [
         v => !!v || "E-mail is required",
         v => /.+@.+/.test(v) || "E-mail must be valid"

@@ -6,7 +6,7 @@
           <h1>Home Page</h1>
         </div>
         <AuthDialog />
-        <ComposeDialog />
+        <ComposeDialog newPost />
       </v-flex>
       <dashboard />
       <v-container fluid grid-list-lg>
