@@ -37,6 +37,8 @@
 
 
 <script>
+import slugify from "slugify";
+
 import ComposeForm from "@/components/Forms/Compose"
 
 
@@ -59,8 +61,8 @@ export default {
       default: false
     },
     post: {
-      type: Object,
-    },
+      type: Object
+    }
   },
   data() {
     return {
@@ -70,11 +72,41 @@ export default {
         form: 'ComposeForm',
         label: ''
     };
+  },
+  methods: {
+    onSubmit() {
+
+      //this.updateSlug();
+      this.$emit("submit", this.post);
+      this.dialog = false
+    },
+    updateSlug(e) {
+      const inputText = this.editedPost.title;
+      const inputPageType = this.editedPost.pageType;
+      const inputCategory = this.editedPost.category;
+      let inputSlug = "";
+      let slugPrefix = "";
+
+      if (inputPageType === "page") {
+        inputSlug = inputCategory + "/" + inputText;
+      } else {
+        inputSlug = "posts/" + inputText;
+      }
+
+      const slug = slugify(inputSlug, {
+        replacement: "-", // replace spaces with replacement
+        remove: /[*+~.()'"!:@]/g, // regex to remove characters
+        lower: true // result in lower case
+      });
+
+      this.editedPost.slug = slugPrefix + "/" + slug;
+    }
+
   }
 }
 </script>
 
-<style>
+<style> 
 
 .hover:hover {
 

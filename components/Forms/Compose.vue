@@ -52,8 +52,6 @@
 </template>
 
 <script>
-import slugify from "slugify";
-
 import AppButton from "@/components/UI/AppButton";
 import AppControlInput from "@/components/UI/AppControlInput";
 
@@ -137,49 +135,18 @@ export default {
     };
   },
   computed: {
-    isDisabled() {
-      // evaluate whatever you need to determine disabled here...
-      return this.form.validated;
+    // isDisabled() {
+    //   // evaluate whatever you need to determine disabled here...
+    //   return this.form.validated;
+    // },
+    title: {
+        get() {
+            return this.$store.state.newPost.title
+          }
     }
   },
   methods: {
-    onSave() {
-      
-      // Save the post
-      this.updateSlug();
-
-      if (this.$store.state.formError === false || this.existingPost) {
-        this.$emit("submit", this.editedPost);
-      } else {
-        alert("Please fix the error before saving the form.");
-      }
-    },
-    onCancel() {
-      // Navigate back
-
-      this.$router.push("/admin");
-    },
-    updateSlug(e) {
-      const inputText = this.editedPost.title;
-      const inputPageType = this.editedPost.pageType;
-      const inputCategory = this.editedPost.category;
-      let inputSlug = "";
-      let slugPrefix = "";
-
-      if (inputPageType === "page") {
-        inputSlug = inputCategory + "/" + inputText;
-      } else {
-        inputSlug = "posts/" + inputText;
-      }
-
-      const slug = slugify(inputSlug, {
-        replacement: "-", // replace spaces with replacement
-        remove: /[*+~.()'"!:@]/g, // regex to remove characters
-        lower: true // result in lower case
-      });
-
-      this.editedPost.slug = slugPrefix + "/" + slug;
-    }
+    
   },
   onSubmit() {
     this.$store

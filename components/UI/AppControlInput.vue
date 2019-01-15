@@ -9,7 +9,6 @@
           v-bind="$attrs"
           :value="value"
           required
-          @input="$emit('input', $event.target.value)">
         ></v-text-field>
         <v-text-field 
           label="Title"
@@ -20,14 +19,12 @@
           required
           @blur="checkTitle"
           @keydown="removeMessage"
-          @input="$emit('input', $event.target.value)">
         ></v-text-field>
         <v-textarea
           v-else-if="controlType === 'textarea'"
           :label="label"
           auto-grow
           :value="value"
-          @input="$emit('input', $event.target.value)"
         ></v-textarea>
     </v-flex>
 
@@ -45,7 +42,20 @@ export default {
   data() {
     return {
       duplicateTitle: false,
-      message: 'Duplicate title found. Please modify your title.'
+      message: 'Duplicate title found. Please modify your title.',
+      newPost: {
+        author: "Chris Bemister",
+        title: "",
+        slug: "",
+        status: "",
+        category: "",
+        pageType: "",
+        featured: false,
+        thumbnail: "",
+        content: "",
+        shortDescription: "",
+        existingPost: false
+        },
     }
   },
   name: 'AppInputControl',
@@ -80,8 +90,6 @@ export default {
                 this.duplicateTitle = true
                 this.setFocus()
 
-                this.$store.dispatch("updateFormError", true);
-
             }
 
           }
@@ -91,13 +99,31 @@ export default {
     },
     removeMessage() {
       this.duplicateTitle = false
-      this.$store.dispatch("updateFormError", false);
     },
     setFocus() {
       // Note, you need to add a ref="search" attribute to your input.
       this.$refs.title.focus();
     }
+  },
+  computed: {
+    // title: {
+    //       set(title) {
+    //         this.$store.commit('newPost', { title: title })
+    //       },
+    //       get() {
+    //         return this.$store.state.newPost.title
+    //       }
+    //     },
+    // body: {
+    //   set(body) {
+    //     this.$store.commit('SET_PAGE', { body })
+    //   },
+    //   get() {
+    //     return this.$store.state.page.body
+    //   }
+    // }
   }
+   
 }
 </script>
 

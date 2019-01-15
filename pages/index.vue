@@ -69,6 +69,9 @@ export default {
   computed: {
     loadedPosts() { 
       return this.$store.getters.loadedPosts
+    },
+    newPost() { 
+      return this.$store.getters.newPost
     }
   }
 }
